@@ -16,11 +16,14 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', function(){
     return view('admin.index');
 });
 
-Route::resource('/users', 'AdminUsersController');
+Route::group(['middleware'=>'admin'], function(){
+    Route::resource('/users', 'AdminUsersController');
+    Route::resource('/users/posts', 'AdminPostsController');
+});

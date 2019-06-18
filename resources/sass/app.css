@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+.navbar-laravel {
+  background-color: white;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+#admin-page {
+  padding-top: 0px;
+}
+/*# sourceMappingURL=app.css.map */
