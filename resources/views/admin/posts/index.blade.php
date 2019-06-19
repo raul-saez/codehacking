@@ -1,7 +1,15 @@
 @extends('layouts.admin')
 
-
 @section('content')
+@if (Session::has('create_post'))
+    <p class="bg-danger">{{session('create_post')}}</p>
+@endif
+@if (Session::has('update_post'))
+    <p class="bg-danger">{{session('update_post')}}</p>
+@endif
+@if (Session::has('delete_post'))
+    <p class="bg-danger">{{session('delete_post')}}</p>
+@endif
     <h1>Posts</h1>
     <table class="table">
         <thead>
@@ -23,13 +31,11 @@
                         <td>{{$post->id}}</td>
                         <td><img height="30" src="{{$post->photo_id ? $post->photo->file : '/images/placeholder.jpg'}}" alt=""></td>
                         <td>{{$post->user->name}}</td>
-                        <td>{{$post->category_id}}</td>
-                        <td>{{$post->title}}</td>
-                        <td>{{$post->body}}</td>
+                        <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
+                        <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
+                        <td>{{str_limit($post->body,15)}}</td>
                         <td>{{$post->created_at}}</td>
                         <td>{{$post->updated_at}}</td>
-                        {{-- <td>{{$post->created_at->diffForhumans()}}</td>
-                        <td>{{$post->updated_at->diffForhumans()}}</td> --}}
                     </tr>
                 @endforeach
             @endif
