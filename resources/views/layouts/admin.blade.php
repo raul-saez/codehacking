@@ -15,7 +15,7 @@
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-
+    @yield('styles')
 
 
 
@@ -111,6 +111,9 @@
                             <li>
                                 <a href="{{route('posts.create')}}">Create Post</a>
                             </li>
+                            <li>
+                                <a href="{{route('comments.index')}}">All Comments</a>
+                            </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
@@ -124,9 +127,9 @@
                                 <a href="{{route('categories.index')}}">All Categories</a>
                             </li>
 
-                            <li>
+                            {{-- <li>
                                 <a href="{{route('categories.create')}}">Create Category</a>
-                            </li>
+                            </li> --}}
 
                         </ul>
                         <!-- /.nav-second-level -->
@@ -137,22 +140,17 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{route('media.index')}}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="/media">Upload Media</a>
+                                <a href="{{route('media.create')}}">Upload Media</a>
                             </li>
 
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
-
-
-
-
-
-
+    
 
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -316,8 +314,7 @@
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
 
-
-@yield('footer')
+@yield('scripts')
 
 
 

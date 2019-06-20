@@ -7,3 +7,11 @@
   padding-top: 0px;
 }
 
+#nested-comment {
+  margin-top: 40px;
+}
+
+.comment-reply {
+  display: none;
+}
+

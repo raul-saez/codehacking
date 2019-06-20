@@ -8,6 +8,7 @@ use App\Http\Requests\PostsCreateRequest;
 use Auth;
 use App\Photo;
 use App\Category;
+use App\Comment;
 use Illuminate\Support\Facades\Session;
 
 class AdminPostsController extends Controller
@@ -123,5 +124,11 @@ class AdminPostsController extends Controller
         $post->delete();
         Session::flash('delete_post', 'The post has been deleted');
         return redirect()->route('posts.index');    
+    }
+
+    public function post($id){
+        $post = Post::findOrFail($id);
+        $comments = Comment::all();
+        return view('post', compact('post', 'comments'));
     }
 }
