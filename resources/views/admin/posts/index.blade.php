@@ -16,10 +16,9 @@
             <tr>
                 <th>ID</th>
                 <th>Photo</th>
+                <th>Title</th>
                 <th>Owner</th>
                 <th>Category</th>
-                <th>Title</th>
-                <th>Body</th>
                 <th></th>
                 <th></th>
                 <th>Created</th>
@@ -32,10 +31,9 @@
                     <tr>
                         <td>{{$post->id}}</td>
                         <td><img height="30" src="{{$post->photo_id ? $post->photo->file : '/images/placeholder.jpg'}}" alt=""></td>
+                        <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
                         <td>{{$post->user->name}}</td>
                         <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>
-                        <td><a href="{{route('posts.edit', $post->id)}}">{{$post->title}}</a></td>
-                        <td>{{str_limit($post->body,15)}}</td>
                         <td><a href="{{route('home.post', $post->slug)}}">View Post</a></td>
                         <td><a href="{{route('comments.show', $post->id)}}">View Comments</a></td>
                         <td>{{$post->created_at}}</td>

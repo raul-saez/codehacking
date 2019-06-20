@@ -130,6 +130,7 @@ class AdminPostsController extends Controller
     public function post($slug){
         $post = Post::findBySlugOrFail($slug);
         $comments = Comment::all();
-        return view('post', compact('post', 'comments'));
+        $categories = Category::all();
+        return view('post', compact('post', 'comments', 'categories'));
     }
 }

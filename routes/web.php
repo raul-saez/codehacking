@@ -11,17 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/post/{id}', ['as'=>'home.post', 'uses'=>'AdminPostsController@post']);
-// Route::get('/admin', function(){
-//     return view('admin.index');
-// });
+
 Route::resource('/users/posts', 'AdminPostsController');
 Route::resource('/users/categories', 'AdminCategoriesController');
 Route::resource('/users/media', 'AdminMediaController');
@@ -29,9 +25,7 @@ Route::resource('/users/comments', 'PostCommentsController');
 Route::resource('/users/comments/replies', 'CommentRepliesController');
 
 Route::group(['middleware'=>'admin'], function(){
-    Route::get('/admin', function(){
-        return view('admin.index');
-    });
+    Route::get('/admin', 'AdminController@index');
     Route::resource('/users', 'AdminUsersController');
     Route::resource('/users/posts', 'AdminPostsController');
     Route::resource('/users/categories', 'AdminCategoriesController');
@@ -42,5 +36,4 @@ Route::group(['middleware'=>'admin'], function(){
 
 Route::group(['middleware'=>'auth'], function(){
     Route::post('/comments/reply', 'CommentRepliesController@createReply');
-
 });
